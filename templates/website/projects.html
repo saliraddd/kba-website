@@ -1,45 +1,113 @@
 {% extends "base.html" %}
 
-{% block title %}پروژه‌ها | KBA{% endblock %}
+{% block title %}
+پروژه‌ها | KBA
+{% endblock %}
+
 
 {% block content %}
 
 <section class="page-header">
+
     <div class="container">
+
         <span>PROJECTS</span>
-        <h1>پروژه‌های انجام‌شده</h1>
+
+        <h1>
+            پروژه‌های انجام‌شده
+        </h1>
+
+        <p>
+            بخشی از پروژه‌ها و خدمات تخصصی انجام‌شده
+            توسط مهندسین مشاور کاوش بهینه آزما
+        </p>
+
     </div>
+
 </section>
+
 
 <section class="section">
 
-    <div class="container cards-grid">
+    <div class="container">
 
-        {% for project in projects %}
+        <div class="cards-grid">
 
-        <article class="card">
+            {% for project in projects %}
 
-            {% if project.image %}
-            <img src="{{ project.image.url }}">
-            {% endif %}
+            <article class="card project-card">
 
-            <div class="card-body">
 
-                <h3>{{ project.title }}</h3>
+                {% if project.image %}
 
-                <p>{{ project.description|truncatewords:30 }}</p>
+                <a href="{% url 'website:project_detail' project.pk %}">
 
-                {% if project.client %}
-                <strong>
-                    کارفرما: {{ project.client }}
-                </strong>
+                    <img
+                        src="{{ project.image.url }}"
+                        alt="{{ project.title }}"
+                    >
+
+                </a>
+
                 {% endif %}
 
-            </div>
 
-        </article>
+                <div class="card-body">
 
-        {% endfor %}
+                    <h3>
+                        {{ project.title }}
+                    </h3>
+
+
+                    {% if project.client %}
+
+                    <p>
+                        <strong>کارفرما:</strong>
+                        {{ project.client }}
+                    </p>
+
+                    {% endif %}
+
+
+                    {% if project.location %}
+
+                    <p>
+                        <strong>محل پروژه:</strong>
+                        {{ project.location }}
+                    </p>
+
+                    {% endif %}
+
+
+                    <p>
+                        {{ project.description|truncatewords:30 }}
+                    </p>
+
+
+                    <!-- لینک جزئیات دقیقاً اینجاست -->
+
+                    <a
+                        href="{% url 'website:project_detail' project.pk %}"
+                        class="text-link"
+                    >
+                        مشاهده جزئیات پروژه ←
+                    </a>
+
+
+                </div>
+
+            </article>
+
+
+            {% empty %}
+
+            <p class="empty-message">
+                پروژه‌های شرکت به‌زودی در این بخش قرار می‌گیرند.
+            </p>
+
+            {% endfor %}
+
+        </div>
 
     </div>
 
