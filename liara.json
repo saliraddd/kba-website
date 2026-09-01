@@ -1,0 +1,15 @@
+{
+"build": {
+   "location": "germany"
+},
+
+"app": "kba",
+
+"platform": "django",
+
+"django": {
+    "mirror": false,
+    "pythonVersion": "3.12"
+}
+
+}

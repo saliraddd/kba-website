@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}خدمات | KBA{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <div class="container">
+        <span>SERVICES</span>
+        <h1>خدمات تخصصی</h1>
+        <p>خدمات آزمون، بازرسی و کنترل کیفیت</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container cards-grid">
+
+        {% for service in services %}
+
+            <article class="card">
+
+                {% if service.image %}
+
+                <a href="{% url 'website:service_detail' service.pk %}">
+
+                    <img
+                        src="{{ service.image.url }}"
+                        alt="{{ service.title }}"
+                    >
+
+                </a>
+
+                {% endif %}
+
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        {{ service.short_name }}
+                    </span>
+
+                    <h3>
+                        {{ service.title }}
+                    </h3>
+
+                    <p>
+                        {{ service.short_description }}
+                    </p>
+
+
+                    <a
+                        href="{% url 'website:service_detail' service.pk %}"
+                        class="text-link"
+                    >
+                        مشاهده جزئیات ←
+                    </a>
+
+                </div>
+
+            </article>
+
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+{{ service.title }} | KBA
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="page-header">
+
+    <div class="container">
+
+        <span>
+            {{ service.short_name|default:"SERVICE" }}
+        </span>
+
+        <h1>
+            {{ service.title }}
+        </h1>
+
+        {% if service.short_description %}
+
+        <p>
+            {{ service.short_description }}
+        </p>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container detail-grid">
+
+
+        <div class="detail-content">
+
+            {% if service.image %}
+
+            <img
+                src="{{ service.image.url }}"
+                alt="{{ service.title }}"
+                class="detail-image"
+            >
+
+            {% endif %}
+
+
+            <span class="section-label">
+                TECHNICAL SERVICE
+            </span>
+
+
+            <h2>
+                درباره این خدمت
+            </h2>
+
+
+            <div class="description">
+                {{ service.description|linebreaks }}
+            </div>
+
+        </div>
+
+
+        <aside class="detail-sidebar">
+
+            <span>
+                حوزه خدمات
+            </span>
+
+            <h3>
+                {{ service.get_category_display }}
+            </h3>
+
+
+            {% if service.short_name %}
+
+            <div class="info-row">
+
+                <small>
+                    روش آزمون
+                </small>
+
+                <strong>
+                    {{ service.short_name }}
+                </strong>
+
+            </div>
+
+            {% endif %}
+
+
+            <a
+                href="{% url 'website:contact' %}"
+                class="btn btn-primary full-button"
+            >
+                درخواست خدمات
+            </a>
+
+        </aside>
+
+    </div>
+
+</section>
+
+
+{% if related_projects %}
+
+<section class="section related-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                RELATED PROJECTS
+            </span>
+
+            <h2>
+                پروژه‌های مرتبط
+            </h2>
+
+        </div>
+
+
+        <div class="cards-grid">
+
+            {% for project in related_projects %}
+
+            <article class="card">
+
+                {% if project.image %}
+
+                <img
+                    src="{{ project.image.url }}"
+                    alt="{{ project.title }}"
+                >
+
+                {% endif %}
+
+
+                <div class="card-body">
+
+                    <h3>
+                        {{ project.title }}
+                    </h3>
+
+                    <a
+                        href="{% url 'website:project_detail' project.pk %}"
+                        class="text-link"
+                    >
+                        مشاهده پروژه ←
+                    </a>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+{% endblock %}

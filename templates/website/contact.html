@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+تماس با ما | KBA
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="page-header">
+
+    <div class="container">
+
+        <span>
+            CONTACT US
+        </span>
+
+        <h1>
+            تماس با ما
+        </h1>
+
+        <p>
+            برای دریافت مشاوره یا درخواست خدمات بازرسی
+            با کارشناسان ما در ارتباط باشید.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container contact-page-grid">
+
+
+        <div class="contact-information">
+
+            <span class="section-label">
+                CONTACT INFORMATION
+            </span>
+
+            <h2>
+                اطلاعات تماس
+            </h2>
+
+
+            <div class="contact-item">
+
+                <small>
+                    آدرس دفتر
+                </small>
+
+                <strong>
+                    تهران، پاسداران، خیابان شهید مصطفی وفامنش،
+                    خیابان مکران شمالی، پلاک ۱۶، طبقه ۴
+                </strong>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <small>
+                    کد پستی
+                </small>
+
+                <strong>
+                    1668747116
+                </strong>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <small>
+                    ایمیل
+                </small>
+
+                <strong>
+                    mhm.mirghasemi@gmail.com
+                </strong>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <small>
+                    وب‌سایت
+                </small>
+
+                <strong>
+                    kba-testing.ir
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-form-box">
+
+            <span class="section-label">
+                SEND MESSAGE
+            </span>
+
+            <h2>
+                درخواست همکاری یا خدمات
+            </h2>
+
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                <div class="success-message">
+                    {{ message }}
+                </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+
+            <form method="post">
+
+                {% csrf_token %}
+
+
+                <div class="form-grid">
+
+                    <div>
+                        <label>
+                            نام و نام خانوادگی *
+                        </label>
+
+                        {{ form.name }}
+                    </div>
+
+
+                    <div>
+                        <label>
+                            نام شرکت
+                        </label>
+
+                        {{ form.company }}
+                    </div>
+
+
+                    <div>
+                        <label>
+                            شماره تماس *
+                        </label>
+
+                        {{ form.phone }}
+                    </div>
+
+
+                    <div>
+                        <label>
+                            ایمیل
+                        </label>
+
+                        {{ form.email }}
+                    </div>
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        موضوع
+                    </label>
+
+                    {{ form.subject }}
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        توضیحات درخواست *
+                    </label>
+
+                    {{ form.message }}
+
+                </div>
+
+
+                {% if form.errors %}
+
+                <div class="form-errors">
+                    لطفاً اطلاعات فرم را بررسی کنید.
+                </div>
+
+                {% endif %}
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    ارسال درخواست
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

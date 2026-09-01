@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}مجوزها و مدارک | KBA{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <div class="container">
+        <span>CERTIFICATES</span>
+        <h1>مجوزها و مدارک</h1>
+    </div>
+</section>
+
+<section class="section">
+
+    <div class="container cards-grid">
+
+        {% for certificate in certificates %}
+
+        <article class="card">
+
+            {% if certificate.image %}
+            <img src="{{ certificate.image.url }}">
+            {% endif %}
+
+            <div class="card-body">
+
+                <h3>
+                    {{ certificate.title }}
+                </h3>
+
+                <p>
+                    {{ certificate.description }}
+                </p>
+
+                {% if certificate.file %}
+
+                <a href="{{ certificate.file.url }}"
+                   target="_blank"
+                   class="text-link">
+
+                    مشاهده مدرک
+
+                </a>
+
+                {% endif %}
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

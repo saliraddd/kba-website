@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+{{ project.title }} | KBA
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="page-header">
+
+    <div class="container">
+
+        <span>
+            PROJECT
+        </span>
+
+        <h1>
+            {{ project.title }}
+        </h1>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container detail-grid">
+
+
+        <div class="detail-content">
+
+            {% if project.image %}
+
+            <img
+                src="{{ project.image.url }}"
+                alt="{{ project.title }}"
+                class="detail-image"
+            >
+
+            {% endif %}
+
+
+            <h2>
+                شرح پروژه
+            </h2>
+
+            <div class="description">
+                {{ project.description|linebreaks }}
+            </div>
+
+        </div>
+
+
+        <aside class="detail-sidebar">
+
+            <h3>
+                اطلاعات پروژه
+            </h3>
+
+
+            {% if project.client %}
+
+            <div class="info-row">
+
+                <small>
+                    کارفرما
+                </small>
+
+                <strong>
+                    {{ project.client }}
+                </strong>
+
+            </div>
+
+            {% endif %}
+
+
+            {% if project.location %}
+
+            <div class="info-row">
+
+                <small>
+                    محل پروژه
+                </small>
+
+                <strong>
+                    {{ project.location }}
+                </strong>
+
+            </div>
+
+            {% endif %}
+
+
+            {% if project.project_date %}
+
+            <div class="info-row">
+
+                <small>
+                    تاریخ پروژه
+                </small>
+
+                <strong>
+                    {{ project.project_date }}
+                </strong>
+
+            </div>
+
+            {% endif %}
+
+
+            {% if project.services.exists %}
+
+            <div class="project-services">
+
+                <small>
+                    خدمات انجام‌شده
+                </small>
+
+                {% for service in project.services.all %}
+
+                <a
+                    href="{% url 'website:service_detail' service.pk %}"
+                    class="tag"
+                >
+                    {{ service.short_name|default:service.title }}
+                </a>
+
+                {% endfor %}
+
+            </div>
+
+            {% endif %}
+
+        </aside>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,386 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+کاوش بهینه آزما | خدمات بازرسی فنی و NDT
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+
+        <div class="hero-badge">
+            ENGINEERING • INSPECTION • NDT
+        </div>
+
+        <h1>
+            اطمینان از کیفیت
+            <span>پیش از آن‌که دیر شود.</span>
+        </h1>
+
+        <p>
+            ارائه خدمات تخصصی بازرسی فنی،
+            آزمون‌های مخرب و غیرمخرب و کنترل کیفیت
+            تجهیزات، جوش‌ها، اتصالات و محصولات صنعتی.
+        </p>
+
+
+        <div class="hero-actions">
+
+            <a href="{% url 'website:services' %}"
+               class="btn btn-primary">
+
+                مشاهده خدمات
+
+            </a>
+
+            <a href="{% url 'website:projects' %}"
+               class="btn btn-outline">
+
+                پروژه‌های انجام‌شده
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="stats">
+
+    <div class="container stats-grid">
+
+        <div>
+            <strong>DT</strong>
+            <span>آزمون‌های مخرب</span>
+        </div>
+
+        <div>
+            <strong>NDT</strong>
+            <span>آزمون‌های غیرمخرب</span>
+        </div>
+
+        <div>
+            <strong>QC</strong>
+            <span>کنترل کیفیت</span>
+        </div>
+
+        <div>
+            <strong>Inspection</strong>
+            <span>بازرسی فنی</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>OUR SERVICES</span>
+
+            <h2>
+                خدمات تخصصی مهندسی و بازرسی
+            </h2>
+
+            <p>
+                مجموعه‌ای از خدمات تخصصی جهت ارزیابی
+                کیفیت، سلامت و ایمنی تجهیزات و محصولات صنعتی.
+            </p>
+
+        </div>
+
+
+        <div class="cards-grid">
+
+            {% for service in services %}
+
+            <article class="card">
+
+                {% if service.image %}
+
+                <img src="{{ service.image.url }}"
+                     alt="{{ service.title }}">
+
+                {% endif %}
+
+
+                <div class="card-body">
+
+                    {% if service.short_name %}
+                    <span class="service-code">
+                        {{ service.short_name }}
+                    </span>
+                    {% endif %}
+
+                    <h3>
+                        {{ service.title }}
+                    </h3>
+
+                    <p>
+                        {{ service.short_description }}
+                    </p>
+
+                </div>
+
+            </article>
+
+            {% empty %}
+
+            <article class="card placeholder-card">
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        NDT
+                    </span>
+
+                    <h3>
+                        آزمون‌های غیرمخرب
+                    </h3>
+
+                    <p>
+                        انجام انواع آزمون‌های UT، RT،
+                        MT، PT و VT.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="card placeholder-card">
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        DT
+                    </span>
+
+                    <h3>
+                        آزمون‌های مخرب
+                    </h3>
+
+                    <p>
+                        ارزیابی خواص مکانیکی و عملکرد
+                        مواد و اتصالات صنعتی.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="card placeholder-card">
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        INSPECTION
+                    </span>
+
+                    <h3>
+                        بازرسی فنی
+                    </h3>
+
+                    <p>
+                        بازرسی جوش، تجهیزات، اتصالات
+                        و محصولات صنعتی.
+                    </p>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="about-preview">
+
+    <div class="container about-grid">
+
+        <div>
+
+            <span class="section-label">
+                ABOUT KBA
+            </span>
+
+            <h2>
+                تجربه مهندسی در خدمت
+                کیفیت و ایمنی
+            </h2>
+
+            <p>
+                شرکت مهندسین مشاور کاوش بهینه آزما
+                با بهره‌گیری از نیروی متخصص و تجهیزات
+                بازرسی و آزمون، خدمات تخصصی کنترل کیفیت
+                و ارزیابی فنی را به صنایع مختلف ارائه می‌دهد.
+            </p>
+
+            <p>
+                هدف ما ارائه نتایج دقیق، قابل اعتماد
+                و منطبق با استانداردهای فنی و الزامات
+                پروژه است.
+            </p>
+
+
+            <a href="{% url 'website:about' %}"
+               class="text-link">
+
+                بیشتر درباره ما ←
+
+            </a>
+
+        </div>
+
+
+        <div class="industrial-box">
+
+            <div>
+                <strong>NDT</strong>
+                <span>Non-Destructive Testing</span>
+            </div>
+
+            <div>
+                <strong>DT</strong>
+                <span>Destructive Testing</span>
+            </div>
+
+            <div>
+                <strong>QC</strong>
+                <span>Quality Control</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="section projects-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>PROJECTS</span>
+
+            <h2>
+                برخی از پروژه‌های انجام‌شده
+            </h2>
+
+        </div>
+
+
+        <div class="cards-grid">
+
+            {% for project in projects %}
+
+            <article class="card project-card">
+
+                {% if project.image %}
+
+                <img src="{{ project.image.url }}"
+                     alt="{{ project.title }}">
+
+                {% endif %}
+
+                <div class="card-body">
+
+                    <h3>
+                        {{ project.title }}
+                    </h3>
+
+                    {% if project.client %}
+
+                    <p>
+                        کارفرما:
+                        {{ project.client }}
+                    </p>
+
+                    {% endif %}
+
+                </div>
+
+            </article>
+
+            {% empty %}
+
+            <p class="empty-message">
+                پروژه‌های شرکت به‌زودی در این بخش قرار می‌گیرند.
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+
+        <div class="center">
+
+            <a href="{% url 'website:projects' %}"
+               class="btn btn-dark">
+
+                مشاهده تمام پروژه‌ها
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="cta">
+
+    <div class="container cta-content">
+
+        <div>
+
+            <span>
+                نیاز به خدمات بازرسی دارید؟
+            </span>
+
+            <h2>
+                برای بررسی پروژه با کارشناسان ما در ارتباط باشید.
+            </h2>
+
+        </div>
+
+        <a href="{% url 'website:contact' %}"
+           class="btn btn-light">
+
+            تماس با ما
+
+        </a>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

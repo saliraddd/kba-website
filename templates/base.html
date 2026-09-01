@@ -1,0 +1,165 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        KBA | خدمات بازرسی فنی
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<header class="main-header">
+
+    <div class="container navbar">
+
+        <a href="{% url 'website:home' %}"
+           class="brand">
+
+            <div class="brand-icon">
+                KBA
+            </div>
+
+            <div>
+                <strong>کاوش بهینه آزما</strong>
+                <span>Engineering Inspection</span>
+            </div>
+
+        </a>
+
+
+        <button class="menu-button"
+                id="menuButton">
+            ☰
+        </button>
+
+
+        <nav id="mainNav">
+
+            <a href="{% url 'website:home' %}">
+                صفحه اصلی
+            </a>
+
+            <a href="{% url 'website:services' %}">
+                خدمات
+            </a>
+
+            <a href="{% url 'website:projects' %}">
+                پروژه‌ها
+            </a>
+
+            <a href="{% url 'website:equipment' %}">
+                تجهیزات
+            </a>
+
+            <a href="{% url 'website:certificates' %}">
+                مجوزها
+            </a>
+
+            <a href="{% url 'website:about' %}">
+                درباره ما
+            </a>
+
+            <a href="{% url 'website:contact' %}"
+               class="contact-button">
+                تماس با ما
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+        <div>
+
+            <h3>
+                مهندسین مشاور کاوش بهینه آزما
+            </h3>
+
+            <p>
+                ارائه خدمات تخصصی آزمون‌های مخرب،
+                غیرمخرب، بازرسی فنی و کنترل کیفیت
+                صنایع.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>دسترسی سریع</h4>
+
+            <a href="{% url 'website:services' %}">
+                خدمات
+            </a>
+
+            <a href="{% url 'website:projects' %}">
+                پروژه‌ها
+            </a>
+
+            <a href="{% url 'website:equipment' %}">
+                تجهیزات
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>اطلاعات تماس</h4>
+
+            <p>
+                تهران، پاسداران
+            </p>
+
+            <p>
+                info@kba-testing.ir
+            </p>
+
+            <p>
+                kba-testing.ir
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © {% now "Y" %}
+        کاوش بهینه آزما — تمامی حقوق محفوظ است.
+
+    </div>
+
+</footer>
+
+
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

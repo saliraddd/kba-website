@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}پروژه‌ها | KBA{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <div class="container">
+        <span>PROJECTS</span>
+        <h1>پروژه‌های انجام‌شده</h1>
+    </div>
+</section>
+
+<section class="section">
+
+    <div class="container cards-grid">
+
+        {% for project in projects %}
+
+        <article class="card">
+
+            {% if project.image %}
+            <img src="{{ project.image.url }}">
+            {% endif %}
+
+            <div class="card-body">
+
+                <h3>{{ project.title }}</h3>
+
+                <p>{{ project.description|truncatewords:30 }}</p>
+
+                {% if project.client %}
+                <strong>
+                    کارفرما: {{ project.client }}
+                </strong>
+                {% endif %}
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

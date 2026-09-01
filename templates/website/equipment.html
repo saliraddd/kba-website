@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}تجهیزات | KBA{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <div class="container">
+        <span>EQUIPMENT</span>
+        <h1>تجهیزات تخصصی</h1>
+    </div>
+</section>
+
+<section class="section">
+
+    <div class="container cards-grid">
+
+        {% for item in equipment %}
+
+        <article class="card">
+
+            {% if item.image %}
+            <img src="{{ item.image.url }}">
+            {% endif %}
+
+            <div class="card-body">
+
+                <h3>{{ item.name }}</h3>
+
+                {% if item.model %}
+                <span>
+                    مدل: {{ item.model }}
+                </span>
+                {% endif %}
+
+                <p>{{ item.description }}</p>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
