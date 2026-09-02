@@ -219,6 +219,123 @@
 
         </div>
 
+        <div class="cards-grid">
+
+            {% for service in services %}
+
+            <article class="card service-card">
+
+                <a
+                    href="{% url 'website:service_detail' service.pk %}"
+                    class="card-link"
+                >
+
+                    {% if service.image %}
+
+                    <img
+                        src="{{ service.image.url }}"
+                        alt="{{ service.title }}"
+                    >
+
+                    {% endif %}
+
+                    <div class="card-body">
+
+                        {% if service.short_name %}
+
+                        <span class="service-code">
+                            {{ service.short_name }}
+                        </span>
+
+                        {% endif %}
+
+                        <h3>
+                            {{ service.title }}
+                        </h3>
+
+                        <p>
+                            {{ service.short_description }}
+                        </p>
+
+                        <span class="text-link">
+                            مشاهده جزئیات ←
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+
+            {% empty %}
+
+            <article class="card placeholder-card">
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        NDT
+                    </span>
+
+                    <h3>
+                        آزمون‌های غیرمخرب
+                    </h3>
+
+                    <p>
+                        انجام انواع آزمون‌های UT، RT، MT، PT و VT.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="card placeholder-card">
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        DT
+                    </span>
+
+                    <h3>
+                        آزمون‌های مخرب
+                    </h3>
+
+                    <p>
+                        ارزیابی خواص مکانیکی و عملکرد مواد و اتصالات صنعتی.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="card placeholder-card">
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        INSPECTION
+                    </span>
+
+                    <h3>
+                        بازرسی فنی
+                    </h3>
+
+                    <p>
+                        بازرسی جوش، تجهیزات، اتصالات و محصولات صنعتی.
+                    </p>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
     </div>
 
 </section>
