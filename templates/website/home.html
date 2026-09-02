@@ -320,31 +320,58 @@
 
             <article class="card project-card">
 
-                {% if project.image %}
+                <a
+                    href="{% url 'website:project_detail' project.pk %}"
+                    class="card-link"
+                >
 
-                <img src="{{ project.image.url }}"
-                     alt="{{ project.title }}">
+                    {% if project.image %}
 
-                {% endif %}
-
-                <div class="card-body">
-
-                    <h3>
-                        {{ project.title }}
-                    </h3>
-
-                    {% if project.client %}
-
-                    <p>
-                        کارفرما:
-                        {{ project.client }}
-                    </p>
+                    <img
+                        src="{{ project.image.url }}"
+                        alt="{{ project.title }}"
+                    >
 
                     {% endif %}
 
-                </div>
+                    <div class="card-body">
+
+                        <span class="service-code">
+                            PROJECT
+                        </span>
+
+                        <h3>
+                            {{ project.title }}
+                        </h3>
+
+                        {% if project.client %}
+
+                        <p>
+                            کارفرما: {{ project.client }}
+                        </p>
+
+                        {% endif %}
+
+
+                        {% if project.location %}
+
+                        <p>
+                            محل پروژه: {{ project.location }}
+                        </p>
+
+                        {% endif %}
+
+
+                        <span class="text-link">
+                            مشاهده جزئیات پروژه ←
+                        </span>
+
+                    </div>
+
+                </a>
 
             </article>
+
 
             {% empty %}
 
