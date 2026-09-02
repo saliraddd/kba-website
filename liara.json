@@ -10,6 +10,13 @@
 "django": {
     "mirror": false,
     "pythonVersion": "3.12"
-}
+},
+
+"disks" : [
+    {
+        "name": "kba-disk",
+        "mountTo": "media"
+    }
+]
 
 }
