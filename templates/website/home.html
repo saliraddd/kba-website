@@ -11,6 +11,19 @@
 
 <section class="hero">
 
+    <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+    >
+        <source
+            src="{% static 'videos/hero.mp4' %}"
+            type="video/mp4"
+        >
+    </video>
+
     <div class="hero-overlay"></div>
 
     <div class="container hero-content">
@@ -25,26 +38,25 @@
         </h1>
 
         <p>
-            ارائه خدمات تخصصی بازرسی فنی،
-            آزمون‌های مخرب و غیرمخرب و کنترل کیفیت
-            تجهیزات، جوش‌ها، اتصالات و محصولات صنعتی.
+            ارائه خدمات تخصصی بازرسی فنی، آزمون‌های مخرب و
+            غیرمخرب و کنترل کیفیت تجهیزات، جوش‌ها، اتصالات
+            و محصولات صنعتی.
         </p>
-
 
         <div class="hero-actions">
 
-            <a href="{% url 'website:services' %}"
-               class="btn btn-primary">
-
+            <a
+                href="{% url 'website:services' %}"
+                class="btn btn-primary"
+            >
                 مشاهده خدمات
-
             </a>
 
-            <a href="{% url 'website:projects' %}"
-               class="btn btn-outline">
-
+            <a
+                href="{% url 'website:projects' %}"
+                class="btn btn-outline"
+            >
                 پروژه‌های انجام‌شده
-
             </a>
 
         </div>
@@ -52,8 +64,6 @@
     </div>
 
 </section>
-
-
 
 <section class="stats">
 
@@ -82,7 +92,6 @@
     </div>
 
 </section>
-
 
 
 <section class="section">
@@ -215,7 +224,6 @@
 </section>
 
 
-
 <section class="about-preview">
 
     <div class="container about-grid">
@@ -277,7 +285,6 @@
     </div>
 
 </section>
-
 
 
 <section class="section projects-section">
@@ -352,7 +359,6 @@
     </div>
 
 </section>
-
 
 
 <section class="cta">
