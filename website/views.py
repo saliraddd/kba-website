@@ -115,3 +115,22 @@ def contact(request):
         "website/contact.html",
         {"form": form},
     )
+
+def ndt_service(request):
+    return render(request, "website/services/ndt.html")
+
+
+def ndt_level3(request):
+    return render(request, "website/services/ndt_level3.html")
+
+
+def welding_engineering(request):
+    return render(request, "website/services/welding_engineering.html")
+
+
+def technical_inspection(request):
+    return render(request, "website/services/technical_inspection.html")
+
+
+def welding_inspection(request):
+    return render(request, "website/services/welding_inspection.html")

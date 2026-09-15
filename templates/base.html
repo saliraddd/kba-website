@@ -52,9 +52,50 @@
                 صفحه اصلی
             </a>
 
-            <a href="{% url 'website:services' %}">
-                خدمات
-            </a>
+        
+            <div class="nav-dropdown">
+
+                <div class="nav-dropdown-header">
+
+                    <a href="{% url 'website:services' %}">
+                        خدمات
+                    </a>
+
+                    <button
+                        type="button"
+                        class="dropdown-toggle"
+                        aria-label="نمایش زیرمنوی خدمات"
+                    >
+                        ▾
+                    </button>
+
+                </div>
+
+                <div class="dropdown-menu">
+
+                    <a href="{% url 'website:ndt_service' %}">
+                        خدمات آزمایشات غیرمخرب (NDT)
+                    </a>
+
+                    <a href="{% url 'website:ndt_level3' %}">
+                        خدمات سطح III آزمایشات غیرمخرب
+                    </a>
+
+                    <a href="{% url 'website:welding_engineering' %}">
+                        خدمات در زمینه مهندسی جوش
+                    </a>
+
+                    <a href="{% url 'website:technical_inspection' %}">
+                        بازرسی فنی و نظارت عالیه
+                    </a>
+
+                    <a href="{% url 'website:welding_inspection' %}">
+                        بازرسی جوش در انواع سازه‌ها و تجهیزات
+                    </a>
+
+                </div>
+
+            </div>
 
             <a href="{% url 'website:projects' %}">
                 پروژه‌ها

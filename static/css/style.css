@@ -696,14 +696,277 @@ nav a:hover {
     color: var(--dark);
 }
 
+/* ================================
+   SERVICES DROPDOWN
+================================ */
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-toggle {
+    background: transparent;
+    border: 0;
+    color: var(--orange);
+    cursor: pointer;
+    font-size: 13px;
+    padding: 5px;
+    font-family: inherit;
+}
+
+/* Dropdown is hidden by default */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 18px);
+    right: 0;
+
+    width: 340px;
+
+    background: #121c24;
+    border-top: 3px solid var(--orange);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .30);
+
+    padding: 8px 0;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(10px);
+
+    transition:
+        opacity .2s ease,
+        transform .2s ease,
+        visibility .2s ease;
+
+    z-index: 2000;
+}
+
+
+/* Invisible bridge between menu and dropdown */
+
+.dropdown-menu::before {
+    content: "";
+    position: absolute;
+
+    top: -20px;
+    right: 0;
+
+    width: 100%;
+    height: 20px;
+}
+
+
+/* Dropdown links */
+
+.dropdown-menu a {
+    display: block;
+
+    padding: 12px 20px;
+
+    color: #d5dbe0;
+
+    font-size: 13px;
+    line-height: 1.8;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        padding .2s ease;
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: 0;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(245, 158, 11, .10);
+    color: var(--orange);
+    padding-right: 25px;
+}
+
+
+/* ================================
+   DESKTOP
+================================ */
+
+@media (min-width: 801px) {
+
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
 
 @media (max-width: 800px) {
 
+    /* Main grids */
+
+    .cards-grid,
+    .stats-grid,
+    .about-grid,
+    .contact-grid,
+    .footer-grid,
     .detail-grid,
     .contact-page-grid,
     .form-grid {
         grid-template-columns: 1fr;
     }
+
+
+    /* Main navigation */
+
+    nav {
+        display: none;
+
+        position: absolute;
+
+        top: 82px;
+        right: 0;
+        left: 0;
+
+        background: var(--dark);
+
+        padding: 25px;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 10px;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+
+    /* Hamburger */
+
+    .menu-button {
+        display: block;
+
+        background: none;
+        border: 0;
+
+        color: white;
+
+        font-size: 25px;
+
+        cursor: pointer;
+    }
+
+
+    /* Services dropdown */
+
+    .nav-dropdown {
+        width: 100%;
+    }
+
+    .nav-dropdown-header {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .nav-dropdown-header > a {
+        flex: 1;
+    }
+
+    .dropdown-toggle {
+        font-size: 18px;
+
+        padding: 5px 15px;
+
+        transition: transform .2s ease;
+    }
+
+
+    /*
+       IMPORTANT:
+       On mobile the dropdown stays hidden
+       until JS adds .open to .nav-dropdown
+    */
+
+    .dropdown-menu {
+        position: static;
+
+        width: 100%;
+
+        margin-top: 8px;
+        padding: 0;
+
+        background: #18232d;
+
+        border-top: 2px solid var(--orange);
+
+        box-shadow: none;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transform: none;
+
+        display: none;
+
+        transition: none;
+    }
+
+
+    /* Open only after tapping arrow */
+
+    .nav-dropdown.open .dropdown-menu {
+        display: block;
+
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+
+    /* Rotate arrow */
+
+    .nav-dropdown.open .dropdown-toggle {
+        transform: rotate(180deg);
+    }
+
+
+    .dropdown-menu::before {
+        display: none;
+    }
+
+
+    .dropdown-menu a {
+        display: block;
+
+        padding: 12px 15px;
+
+        font-size: 13px;
+
+        border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+
+    /* Detail page */
 
     .detail-sidebar {
         position: static;
@@ -713,59 +976,22 @@ nav a:hover {
         height: 300px;
     }
 
+
+    /* Contact */
+
     .contact-form-box {
         padding: 25px;
     }
 
+
+    /* Hero */
+
+    .hero {
+        min-height: 580px;
+    }
+
     .hero-video {
         object-position: center;
-    }
-
-    .hero {
-        min-height: 580px;
-    }
-}
-
-
-/* MOBILE */
-
-@media (max-width: 800px) {
-
-    .cards-grid,
-    .stats-grid,
-    .about-grid,
-    .contact-grid,
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-
-    nav {
-        display: none;
-        position: absolute;
-        top: 82px;
-        right: 0;
-        left: 0;
-        background: var(--dark);
-        padding: 25px;
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    nav.active {
-        display: flex;
-    }
-
-    .menu-button {
-        display: block;
-        background: none;
-        border: 0;
-        color: white;
-        font-size: 25px;
-        cursor: pointer;
-    }
-
-    .hero {
-        min-height: 580px;
     }
 
     .hero-actions {
@@ -773,9 +999,12 @@ nav a:hover {
         align-items: flex-start;
     }
 
+
+    /* CTA */
+
     .cta-content {
         flex-direction: column;
         align-items: flex-start;
     }
-
 }
+
