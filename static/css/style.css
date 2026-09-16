@@ -1341,9 +1341,8 @@ nav a:hover {
    RESPONSIVE
 ======================================== */
 
-
 /* ================================
-   DESKTOP
+   DESKTOP DROPDOWN
 ================================ */
 
 @media (min-width: 801px) {
@@ -1355,6 +1354,29 @@ nav a:hover {
         pointer-events: auto;
         transform: translateY(0);
     }
+
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (min-width: 801px) and (max-width: 1000px) {
+
+    /* Services */
+
+    .services-main-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* Projects */
+
+    .projects-showcase-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
 }
 
 
@@ -1364,7 +1386,9 @@ nav a:hover {
 
 @media (max-width: 800px) {
 
-    /* Main grids */
+    /* =================================
+       MAIN GRIDS
+    ================================= */
 
     .cards-grid,
     .stats-grid,
@@ -1378,7 +1402,9 @@ nav a:hover {
     }
 
 
-    /* Main navigation */
+    /* =================================
+       MAIN NAVIGATION
+    ================================= */
 
     nav {
         display: none;
@@ -1404,7 +1430,9 @@ nav a:hover {
     }
 
 
-    /* Hamburger */
+    /* =================================
+       HAMBURGER
+    ================================= */
 
     .menu-button {
         display: block;
@@ -1420,7 +1448,9 @@ nav a:hover {
     }
 
 
-    /* Services dropdown */
+    /* =================================
+       SERVICES DROPDOWN
+    ================================= */
 
     .nav-dropdown {
         width: 100%;
@@ -1448,7 +1478,6 @@ nav a:hover {
 
 
     /*
-       IMPORTANT:
        On mobile the dropdown stays hidden
        until JS adds .open to .nav-dropdown
     */
@@ -1479,7 +1508,7 @@ nav a:hover {
     }
 
 
-    /* Open only after tapping arrow */
+    /* Open after tapping arrow */
 
     .nav-dropdown.open .dropdown-menu {
         display: block;
@@ -1513,7 +1542,9 @@ nav a:hover {
     }
 
 
-    /* Detail page */
+    /* =================================
+       DETAIL PAGE
+    ================================= */
 
     .detail-sidebar {
         position: static;
@@ -1524,14 +1555,18 @@ nav a:hover {
     }
 
 
-    /* Contact */
+    /* =================================
+       CONTACT
+    ================================= */
 
     .contact-form-box {
         padding: 25px;
     }
 
 
-    /* Hero */
+    /* =================================
+       HERO
+    ================================= */
 
     .hero {
         min-height: 580px;
@@ -1547,12 +1582,19 @@ nav a:hover {
     }
 
 
-    /* CTA */
+    /* =================================
+       CTA
+    ================================= */
 
     .cta-content {
         flex-direction: column;
         align-items: flex-start;
     }
+
+
+    /* =================================
+       SERVICES PAGE
+    ================================= */
 
     .services-main-grid {
         grid-template-columns: 1fr;
@@ -1562,17 +1604,77 @@ nav a:hover {
         margin: 24px 24px 5px auto;
     }
 
-    .projects-showcase-grid {
-        grid-template-columns: 1fr;
 
-        gap: 25px;
+    /* =================================
+       PROJECTS MOBILE SLIDER
+    ================================= */
+
+    .projects-showcase-grid {
+        display: flex;
+
+        grid-template-columns: none;
+
+        gap: 16px;
+
+        width: calc(100% + 20px);
+
+        margin-left: -10px;
+        margin-right: 0;
+
+        padding: 5px 10px 25px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: none;
     }
 
+
+    /* Hide scrollbar - Chrome / Safari */
+
+    .projects-showcase-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    /* Each project takes almost full screen */
+
+    .project-showcase-card {
+        flex: 0 0 calc(100vw - 40px);
+
+        width: calc(100vw - 40px);
+
+        max-width: 430px;
+
+        min-width: 0;
+
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+
+        transform: none;
+    }
+
+
+    /* Disable desktop hover movement */
+
+    .project-showcase-card:hover {
+        transform: none;
+    }
+
+
+    /* Project image */
 
     .project-showcase-image {
-        height: 230px;
+        height: 250px;
     }
 
+
+    /* Card body */
 
     .project-showcase-body {
         padding: 20px;
@@ -1580,19 +1682,77 @@ nav a:hover {
 
 
     .project-showcase-body h3 {
-        font-size: 16px;
+        font-size: 17px;
+        line-height: 1.9;
     }
+
+
+    /* Project information */
+
+    .project-info-item {
+        font-size: 13px;
+        line-height: 1.9;
+    }
+
+
+    /* No hover overlay on touch devices */
+
+    .project-image-overlay {
+        display: none;
+    }
+
+
+    /* Service tags */
+
+    .project-service-tags {
+        gap: 5px;
+    }
+
+    .project-service-tags span {
+        font-size: 10px;
+    }
+
+
+    /* Swipe hint */
+
+    .projects-mobile-hint {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 15px;
+
+        margin-bottom: 12px;
+
+        color: var(--muted);
+
+        font-size: 12px;
+    }
+
+
+    .projects-swipe-arrows {
+        direction: ltr;
+
+        color: var(--orange);
+
+        font-size: 18px;
+        font-weight: bold;
+    }
+
 }
 
-/* Tablet */
-@media (max-width: 1000px) {
 
-    .services-main-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* ================================
+   DESKTOP / TABLET
+   Hide mobile swipe hint
+================================ */
 
-    .projects-showcase-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (min-width: 801px) {
+
+    .projects-mobile-hint {
+        display: none;
     }
 
 }
+
