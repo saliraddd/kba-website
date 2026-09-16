@@ -1,67 +1,593 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}خدمات | KBA{% endblock %}
+{% block title %}
+خدمات مهندسی، بازرسی فنی و آزمون‌های غیرمخرب | KBA
+{% endblock %}
+
 
 {% block content %}
 
+<!-- PAGE HEADER -->
 <section class="page-header">
     <div class="container">
-        <span>SERVICES</span>
-        <h1>خدمات تخصصی</h1>
-        <p>خدمات آزمون، بازرسی و کنترل کیفیت</p>
+
+        <span>ENGINEERING & INSPECTION SERVICES</span>
+
+        <h1>
+            خدمات مهندسی و بازرسی فنی
+        </h1>
+
+        <p>
+            مجموعه‌ای از خدمات تخصصی در حوزه آزمون‌های غیرمخرب،
+            مهندسی جوش، کنترل کیفیت و بازرسی فنی پروژه‌های صنعتی
+        </p>
+
     </div>
 </section>
 
+
+<!-- INTRODUCTION -->
 <section class="section">
-    <div class="container cards-grid">
 
-        {% for service in services %}
+    <div class="container content-page">
 
-            <article class="card">
+        <span class="section-label">
+            KBA SERVICES
+        </span>
 
-                {% if service.image %}
+        <h2>
+            خدمات تخصصی کاوش بهینه آزما
+        </h2>
 
-                <a href="{% url 'website:service_detail' service.pk %}">
+        <p>
+            شرکت
+            <strong>مهندسین مشاور کاوش بهینه آزما (KBA)</strong>
+            در زمینه ارائه خدمات مهندسی، کنترل کیفیت،
+            بازرسی فنی و آزمون‌های غیرمخرب در پروژه‌های
+            صنعتی فعالیت می‌نماید.
+        </p>
 
-                    <img
-                        src="{{ service.image.url }}"
-                        alt="{{ service.title }}"
-                    >
+        <p>
+            کنترل کیفیت تجهیزات، سازه‌ها و اتصالات جوشی
+            تنها به انجام یک آزمون در پایان فرآیند ساخت
+            محدود نمی‌شود. دستیابی به کیفیت مناسب نیازمند
+            برنامه‌ریزی، بررسی مدارک فنی، کنترل مواد،
+            نظارت بر فرآیندهای ساخت و جوشکاری، انجام
+            بازرسی‌های تخصصی و ثبت و ارزیابی نتایج است.
+        </p>
+
+        <p>
+            خدمات KBA با توجه به نوع پروژه، مشخصات فنی،
+            شرایط بهره‌برداری و الزامات قراردادی می‌تواند
+            از مراحل اولیه ساخت و تولید آغاز شده و تا
+            نصب، راه‌اندازی و بازرسی تجهیزات در حال سرویس
+            ادامه پیدا کند.
+        </p>
+
+        <p>
+            حوزه‌های اصلی خدمات شرکت شامل
+            <strong>
+                آزمون‌های غیرمخرب (NDT)، خدمات تخصصی
+                Level III، مهندسی جوش، بازرسی فنی و
+                نظارت عالیه و بازرسی جوش
+            </strong>
+            است که در ادامه می‌توانید جزئیات هر بخش
+            را مشاهده کنید.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+<section class="section related-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>OUR SERVICES</span>
+
+            <h2>
+                حوزه‌های خدمات KBA
+            </h2>
+
+            <p>
+                برای مشاهده توضیحات کامل هر حوزه،
+                خدمت مورد نظر را انتخاب کنید.
+            </p>
+
+        </div>
+
+
+        <div class="cards-grid services-main-grid">
+
+
+            <!-- NDT -->
+            <article class="card service-card main-service-card">
+
+                <a
+                    href="{% url 'website:ndt_service' %}"
+                    class="card-link"
+                >
+
+                    <div class="main-service-icon">
+                        NDT
+                    </div>
+
+                    <div class="card-body">
+
+                        <span class="service-code">
+                            NON-DESTRUCTIVE TESTING
+                        </span>
+
+                        <h3>
+                            خدمات آزمون‌های غیرمخرب (NDT)
+                        </h3>
+
+                        <p>
+                            ارزیابی مواد، قطعات، تجهیزات و
+                            اتصالات جوشی بدون ایجاد آسیب
+                            دائمی در قطعه، با استفاده از
+                            روش‌های مختلف آزمون غیرمخرب.
+                        </p>
+
+                        <div class="service-methods">
+                            UT • MT • PT • RT • VT • ET
+                        </div>
+
+                        <span class="service-more">
+                            مشاهده خدمات NDT ←
+                        </span>
+
+                    </div>
 
                 </a>
 
-                {% endif %}
+            </article>
 
+
+            <!-- LEVEL III -->
+            <article class="card service-card main-service-card">
+
+                <a
+                    href="{% url 'website:ndt_level3' %}"
+                    class="card-link"
+                >
+
+                    <div class="main-service-icon">
+                        LIII
+                    </div>
+
+                    <div class="card-body">
+
+                        <span class="service-code">
+                            NDT LEVEL III SERVICES
+                        </span>
+
+                        <h3>
+                            خدمات سطح III آزمایشات غیرمخرب
+                        </h3>
+
+                        <p>
+                            خدمات فنی و مشاوره‌ای در زمینه
+                            انتخاب روش و تکنیک NDT، تدوین
+                            و بازبینی دستورالعمل‌ها و
+                            مستندات تخصصی آزمون‌های غیرمخرب.
+                        </p>
+
+                        <div class="service-methods">
+                            PROCEDURE • TECHNIQUE • REVIEW
+                        </div>
+
+                        <span class="service-more">
+                            مشاهده خدمات Level III ←
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+
+            <!-- WELDING ENGINEERING -->
+            <article class="card service-card main-service-card">
+
+                <a
+                    href="{% url 'website:welding_engineering' %}"
+                    class="card-link"
+                >
+
+                    <div class="main-service-icon">
+                        WE
+                    </div>
+
+                    <div class="card-body">
+
+                        <span class="service-code">
+                            WELDING ENGINEERING
+                        </span>
+
+                        <h3>
+                            خدمات در زمینه مهندسی جوش
+                        </h3>
+
+                        <p>
+                            خدمات مهندسی مرتبط با فرآیندهای
+                            جوشکاری، تهیه و بررسی مدارک
+                            فنی و کنترل الزامات مربوط به
+                            WPS، PQR و صلاحیت جوشکاران.
+                        </p>
+
+                        <div class="service-methods">
+                            WPS • PQR • WPQ
+                        </div>
+
+                        <span class="service-more">
+                            مشاهده خدمات مهندسی جوش ←
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+
+            <!-- TECHNICAL INSPECTION -->
+            <article class="card service-card main-service-card">
+
+                <a
+                    href="{% url 'website:technical_inspection' %}"
+                    class="card-link"
+                >
+
+                    <div class="main-service-icon">
+                        TPI
+                    </div>
+
+                    <div class="card-body">
+
+                        <span class="service-code">
+                            TECHNICAL INSPECTION
+                        </span>
+
+                        <h3>
+                            بازرسی فنی و نظارت عالیه
+                        </h3>
+
+                        <p>
+                            نظارت و بازرسی فعالیت‌های ساخت،
+                            نصب و بهره‌برداری تجهیزات و
+                            پروژه‌های صنعتی با هدف کنترل
+                            کیفیت و مدیریت یکپارچگی تجهیزات.
+                        </p>
+
+                        <div class="service-methods">
+                            SHOP • SITE • IN-SERVICE • RBI • FFS
+                        </div>
+
+                        <span class="service-more">
+                            مشاهده خدمات بازرسی فنی ←
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+
+            <!-- WELDING INSPECTION -->
+            <article class="card service-card main-service-card">
+
+                <a
+                    href="{% url 'website:welding_inspection' %}"
+                    class="card-link"
+                >
+
+                    <div class="main-service-icon">
+                        WI
+                    </div>
+
+                    <div class="card-body">
+
+                        <span class="service-code">
+                            WELDING INSPECTION
+                        </span>
+
+                        <h3>
+                            بازرسی جوش در انواع سازه‌ها و تجهیزات
+                        </h3>
+
+                        <p>
+                            کنترل و نظارت بر عملیات جوشکاری
+                            قبل، حین و پس از اجرا و بررسی
+                            تطابق فعالیت‌های انجام‌شده با
+                            مدارک و الزامات فنی پروژه.
+                        </p>
+
+                        <div class="service-methods">
+                            BEFORE • DURING • AFTER
+                        </div>
+
+                        <span class="service-more">
+                            مشاهده خدمات بازرسی جوش ←
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICE PROCESS -->
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>OUR APPROACH</span>
+
+            <h2>
+                رویکرد KBA در ارائه خدمات
+            </h2>
+
+            <p>
+                خدمات بازرسی و کنترل کیفیت بر اساس
+                شرایط و الزامات هر پروژه برنامه‌ریزی می‌شوند.
+            </p>
+
+        </div>
+
+
+        <div class="cards-grid">
+
+
+            <article class="card">
 
                 <div class="card-body">
 
                     <span class="service-code">
-                        {{ service.short_name }}
+                        01
                     </span>
 
                     <h3>
-                        {{ service.title }}
+                        بررسی نیاز پروژه
                     </h3>
 
                     <p>
-                        {{ service.short_description }}
+                        بررسی محدوده کار، نوع تجهیزات،
+                        مدارک فنی و الزامات کارفرما
+                        پیش از شروع فعالیت.
                     </p>
-
-
-                    <a
-                        href="{% url 'website:service_detail' service.pk %}"
-                        class="text-link"
-                    >
-                        مشاهده جزئیات ←
-                    </a>
 
                 </div>
 
             </article>
 
-        {% endfor %}
+
+            <article class="card">
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        02
+                    </span>
+
+                    <h3>
+                        تعیین روش بازرسی
+                    </h3>
+
+                    <p>
+                        انتخاب فعالیت‌ها، روش‌ها و
+                        تکنیک‌های مناسب با توجه به
+                        شرایط فنی پروژه.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        03
+                    </span>
+
+                    <h3>
+                        اجرای خدمات
+                    </h3>
+
+                    <p>
+                        انجام فعالیت‌های بازرسی،
+                        کنترل کیفیت یا آزمون‌های مورد
+                        نیاز مطابق برنامه پروژه.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        04
+                    </span>
+
+                    <h3>
+                        ارزیابی نتایج
+                    </h3>
+
+                    <p>
+                        بررسی نتایج حاصل از بازرسی
+                        و مقایسه آنها با معیارهای
+                        پذیرش تعیین‌شده.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        05
+                    </span>
+
+                    <h3>
+                        مستندسازی
+                    </h3>
+
+                    <p>
+                        ثبت نتایج و تهیه گزارش‌ها
+                        و مستندات مورد نیاز متناسب
+                        با محدوده خدمات.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-body">
+
+                    <span class="service-code">
+                        06
+                    </span>
+
+                    <h3>
+                        پشتیبانی فنی
+                    </h3>
+
+                    <p>
+                        ارائه توضیحات و پشتیبانی فنی
+                        مرتبط با نتایج و فعالیت‌های
+                        انجام‌شده در محدوده پروژه.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
 
     </div>
+
+</section>
+
+
+<!-- INDUSTRIES -->
+<section class="section related-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>INDUSTRIAL APPLICATIONS</span>
+
+            <h2>
+                کاربرد خدمات بازرسی در صنایع
+            </h2>
+
+            <p>
+                خدمات مهندسی و بازرسی فنی متناسب با
+                نوع پروژه و الزامات صنعتی قابل تعریف است.
+            </p>
+
+        </div>
+
+
+        <div class="ndt-list">
+
+            <div class="ndt-list-item">
+                صنایع نفت، گاز، پالایش و پتروشیمی
+            </div>
+
+            <div class="ndt-list-item">
+                خطوط لوله و سیستم‌های پایپینگ
+            </div>
+
+            <div class="ndt-list-item">
+                مخازن ذخیره و تجهیزات تحت فشار
+            </div>
+
+            <div class="ndt-list-item">
+                سازه‌های فلزی و پروژه‌های عمرانی
+            </div>
+
+            <div class="ndt-list-item">
+                تجهیزات و قطعات صنعتی
+            </div>
+
+            <div class="ndt-list-item">
+                پروژه‌های ساخت و نصب تجهیزات
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+
+    <div class="container cta-content">
+
+        <div>
+
+            <span class="section-label">
+                KBA ENGINEERING SERVICES
+            </span>
+
+            <h2>
+                برای دریافت اطلاعات بیشتر درباره خدمات KBA
+                با ما در ارتباط باشید.
+            </h2>
+
+            <p>
+                اطلاعات پروژه و خدمات مورد نیاز خود را
+                برای کارشناسان ما ارسال کنید.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'website:contact' %}"
+            class="btn btn-dark"
+        >
+            درخواست خدمات
+        </a>
+
+    </div>
+
 </section>
 
 {% endblock %}
