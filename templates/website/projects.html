@@ -1,25 +1,28 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
-پروژه‌ها | KBA
+پروژه‌ها | مهندسین مشاور کاوش بهینه آزما
 {% endblock %}
 
 
 {% block content %}
 
+<!-- ========================================
+     PAGE HEADER
+========================================= -->
 <section class="page-header">
 
     <div class="container">
 
-        <span>PROJECTS</span>
+        <span>OUR PROJECTS</span>
 
-        <h1>
-            پروژه‌های انجام‌شده
-        </h1>
+        <h1>پروژه‌ها و سوابق اجرایی</h1>
 
         <p>
-            بخشی از پروژه‌ها و خدمات تخصصی انجام‌شده
-            توسط مهندسین مشاور کاوش بهینه آزما
+            بخشی از سوابق اجرایی شرکت مهندسین مشاور
+            کاوش بهینه آزما در حوزه بازرسی فنی،
+            کنترل کیفیت، بازرسی جوش و آزمون‌های غیرمخرب
         </p>
 
     </div>
@@ -27,87 +30,313 @@
 </section>
 
 
-<section class="section">
+<!-- ========================================
+     PROJECTS
+========================================= -->
+<section class="section projects-section">
 
     <div class="container">
 
-        <div class="cards-grid">
+        <div class="section-heading">
+
+            <span>PROJECT EXPERIENCE</span>
+
+            <h2>پروژه‌های انجام‌شده KBA</h2>
+
+            <p>
+                تجربه همکاری در پروژه‌های مختلف صنعتی
+                و ارائه خدمات تخصصی مهندسی، بازرسی فنی
+                و کنترل کیفیت
+            </p>
+
+        </div>
+
+
+        {% if projects %}
+
+        <div class="projects-showcase-grid">
 
             {% for project in projects %}
 
-            <article class="card project-card">
+            <article class="project-showcase-card">
+
+                <a
+                    href="{% url 'website:project_detail' project.pk %}"
+                    class="project-showcase-link"
+                    aria-label="مشاهده پروژه {{ project.title }}"
+                >
+
+                    <!-- PROJECT IMAGE -->
+                    <div class="project-showcase-image">
+
+                        {% if project.image %}
+
+                        <img
+                            src="{{ project.image.url }}"
+                            alt="{{ project.title }}"
+                            loading="lazy"
+                        >
+
+                        {% else %}
+
+                        <div class="project-no-image">
+
+                            <span>KBA</span>
+
+                            <small>
+                                PROJECT
+                            </small>
+
+                        </div>
+
+                        {% endif %}
 
 
-                {% if project.image %}
+                        <!-- IMAGE OVERLAY -->
+                        <div class="project-image-overlay">
 
-                <a href="{% url 'website:project_detail' project.pk %}">
+                            <span>
+                                مشاهده جزئیات پروژه
+                            </span>
 
-                    <img
-                        src="{{ project.image.url }}"
-                        alt="{{ project.title }}"
-                    >
+                        </div>
+
+
+                        <!-- PROJECT NUMBER -->
+                        <span class="project-image-number">
+
+                            {{ forloop.counter|stringformat:"02d" }}
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- PROJECT CONTENT -->
+                    <div class="project-showcase-body">
+
+                        <span class="project-category">
+                            KBA PROJECT
+                        </span>
+
+
+                        <!-- TITLE -->
+                        <h3>
+                            {{ project.title }}
+                        </h3>
+
+
+                        <!-- PROJECT INFORMATION -->
+                        <div class="project-info-list">
+
+
+                            {% if project.client %}
+
+                            <div class="project-info-item">
+
+                                <span class="project-check">
+                                    ✓
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        کارفرما:
+                                    </strong>
+
+                                    <span>
+                                        {{ project.client }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            {% endif %}
+
+
+                            {% if project.location %}
+
+                            <div class="project-info-item">
+
+                                <span class="project-check">
+                                    ✓
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        محل پروژه:
+                                    </strong>
+
+                                    <span>
+                                        {{ project.location }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            {% endif %}
+
+
+                            {% if project.project_date %}
+
+                            <div class="project-info-item">
+
+                                <span class="project-check">
+                                    ✓
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        تاریخ پروژه:
+                                    </strong>
+
+                                    <span class="project-date">
+                                        {{ project.project_date|date:"Y/m/d" }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            {% endif %}
+
+
+                            {% if project.services.exists %}
+
+                            <div class="project-info-item">
+
+                                <span class="project-check">
+                                    ✓
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        خدمات انجام‌شده:
+                                    </strong>
+
+                                    <span>
+
+                                        {% for service in project.services.all %}
+
+                                            {{ service.short_name|default:service.title }}{% if not forloop.last %}، {% endif %}
+
+                                        {% endfor %}
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- SERVICES TAGS -->
+                        {% if project.services.exists %}
+
+                        <div class="project-service-tags">
+
+                            {% for service in project.services.all %}
+
+                            <span>
+                                {{ service.short_name|default:service.title }}
+                            </span>
+
+                            {% endfor %}
+
+                        </div>
+
+                        {% endif %}
+
+
+                        <!-- VIEW PROJECT -->
+                        <div class="project-view-more">
+
+                            <span>
+                                مشاهده اطلاعات پروژه
+                            </span>
+
+                            <b>
+                                ←
+                            </b>
+
+                        </div>
+
+                    </div>
 
                 </a>
 
-                {% endif %}
-
-
-                <div class="card-body">
-
-                    <h3>
-                        {{ project.title }}
-                    </h3>
-
-
-                    {% if project.client %}
-
-                    <p>
-                        <strong>کارفرما:</strong>
-                        {{ project.client }}
-                    </p>
-
-                    {% endif %}
-
-
-                    {% if project.location %}
-
-                    <p>
-                        <strong>محل پروژه:</strong>
-                        {{ project.location }}
-                    </p>
-
-                    {% endif %}
-
-
-                    <p>
-                        {{ project.description|truncatewords:30 }}
-                    </p>
-
-
-                    <!-- لینک جزئیات دقیقاً اینجاست -->
-
-                    <a
-                        href="{% url 'website:project_detail' project.pk %}"
-                        class="text-link"
-                    >
-                        مشاهده جزئیات پروژه ←
-                    </a>
-
-
-                </div>
-
             </article>
-
-
-            {% empty %}
-
-            <p class="empty-message">
-                پروژه‌های شرکت به‌زودی در این بخش قرار می‌گیرند.
-            </p>
 
             {% endfor %}
 
         </div>
+
+
+        {% else %}
+
+        <!-- EMPTY STATE -->
+        <div class="projects-empty">
+
+            <span>KBA PROJECTS</span>
+
+            <h3>
+                پروژه‌ها به‌زودی اضافه خواهند شد
+            </h3>
+
+            <p>
+                اطلاعات سوابق اجرایی شرکت در حال تکمیل است.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     CTA
+========================================= -->
+<section class="cta">
+
+    <div class="container cta-content">
+
+        <div>
+
+            <span class="section-label">
+                WORK WITH KBA
+            </span>
+
+            <h2>
+                برای همکاری در پروژه‌های صنعتی
+                با KBA در ارتباط باشید.
+            </h2>
+
+            <p>
+                برای دریافت اطلاعات بیشتر درباره خدمات
+                مهندسی، بازرسی فنی و کنترل کیفیت
+                با کارشناسان ما تماس بگیرید.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'website:contact' %}"
+            class="btn btn-dark"
+        >
+            تماس با ما
+        </a>
 
     </div>
 

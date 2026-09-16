@@ -21,12 +21,15 @@ def home(request):
     return render(request, "website/home.html", context)
 
 
-def services(request):
-    context = {
-        "services": Service.objects.all(),
-    }
+# def services(request):
+#     context = {
+#         "services": Service.objects.all(),
+#     }
 
-    return render(request, "website/services.html", context)
+#     return render(request, "website/services.html", context)
+
+def services(request):
+    return render(request, "website/services.html")
 
 
 def service_detail(request, pk):
