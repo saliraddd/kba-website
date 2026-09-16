@@ -134,3 +134,26 @@ def technical_inspection(request):
 
 def welding_inspection(request):
     return render(request, "website/services/welding_inspection.html")
+
+def ut_service(request):
+    return render(request, "website/services/ndt/ut.html")
+
+
+def mt_service(request):
+    return render(request, "website/services/ndt/mt.html")
+
+
+def pt_service(request):
+    return render(request, "website/services/ndt/pt.html")
+
+
+def rt_service(request):
+    return render(request, "website/services/ndt/rt.html")
+
+
+def vt_service(request):
+    return render(request, "website/services/ndt/vt.html")
+
+
+def et_service(request):
+    return render(request, "website/services/ndt/et.html")
